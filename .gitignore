@@ -1,0 +1,5 @@
+# Everything has to be ignore except bash, python scripts and this .gitignore
+*
+!*.sh
+!*.py
+!.gitignore
