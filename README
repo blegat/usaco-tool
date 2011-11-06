@@ -7,6 +7,9 @@ Introduction:
 	Python scripts to surf the web with mechanize.
 	Bash scripts to generate new environment and call Python scripts.
 
+Github repository:
+	You can find this tool on github searching for the project named "usaco-tool"
+
 License:
 	This tool can be modified, and shared without any conditions.
 	It would be also relevant from you to modify it for another training or even for an online competition
@@ -14,7 +17,7 @@ License:
 	but you can make script to use them even faster (I have advanced scripts available too, just ask me if you want them).
 
 Version:
-	This is the 1.2 version, this is still a beta version so bugs may occure. Please report them.
+	This is the 1.2 version, this is still a beta version so bugs may occur. Please report them.
 
 Environment:
 	The environment created by the scripts is the following
@@ -34,7 +37,7 @@ Environment:
 			in
 			out
 
-Requested packages:
+Required packages:
 	python
 	python-mechanize
 
@@ -44,8 +47,8 @@ Installation:
 	$ tar xvfz usacotool-1.2.tar.gz
 	$ rm usacotool-1.2.tar.gz
 	Notice that you are likely to have already untarred the usacotool-1.2.tar.gz file because you are reading this file
-	Edit <YOUR LOGIN> and <YOUR PASSWORD> fields in file config file with the login and password you use to connect
-	the usaco website.
+	$ sh conf
+	Your login and password will be asked, it is the ones you use to connect the usaco website.
 
 Use:
 	Let's imagine you want to start a problem that usaco website call 'ride'. Go to the directory where you unzipped usacotool.zip
@@ -69,7 +72,7 @@ Detailed description:
 		where in this example, the password of john is 1234.
 	inout.py :
 		python script called by new.sh. It browses the usaco website with the login and password you've filled in the config file
-		and gather basic input and output examples showed by the main page of the problem. You should not call it yourself.
+		and gathers basic input and output examples showed by the main page of the problem. You should not call it yourself.
 	submit.py :
 		It browses the usaco website with the login and password you've filled in the config file and submit the main.cpp file in
 		the current directory. YOU MUST BE IN THE MAIN DIRECTORY OF A PROBLEM TO CALL THIS SCRIPT. It shows you which test cases you
