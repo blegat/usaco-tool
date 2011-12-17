@@ -33,7 +33,7 @@ if [ "$taskname" == "" ]; then
 	echo "$desc" | ../../0tool/inout.py
 	if [ $? -eq 1 ]; then
 		read -p "Do you want to remove the problem environment [y/N]? "
-		[ "$REPLY" == "y" ] && let "remove=1"
+		[[ "$REPLY" == "y" || ! -f taskname ]] && let "remove=1"
 	fi
 	if [ $remove -eq 1 ]; then
 		cd ../..
@@ -50,7 +50,7 @@ if [ -e $taskname ]; then
 		rm $taskname
 		mkdir $taskname
 	else
-		read -p "$taskname already exists. Proceed anyway ? [y/N] "
+		read -p "$taskname already exists. Proceed anyway [y/N]? "
 		[ "$REPLY" == "y" ] || exitclean
 	fi
 else
@@ -72,7 +72,7 @@ if [ -e Test0 ]; then
 		rm Test0
 		mkdir Test0
 	else
-		read -p "Test0 already exists. Proceed anyway ? [y/N] "
+		read -p "Test0 already exists. Proceed anyway [y/N]? "
 		cd ..
 		[ "$REPLY" == "y" ] || exitclean
 		cd $taskname
@@ -84,7 +84,7 @@ cd Test0
 let "remove=0"
 if [ $# -eq 0 ]; then
 	mv "../../tmp/tmp/in" ../../tmp/tmp/out ./
-	mv ../../tmp/tmp/desc ../
+	mv ../../tmp/tmp/desc.html ../
 	rm -r ../../tmp
 else
 	echo "Getting the input/output for Test0..."
@@ -98,6 +98,6 @@ else
 		rm -r $taskname
 		exitclean
 	fi
-	mv desc ..
+	mv desc.html ..
 fi
 chmod u+x ../s.sh

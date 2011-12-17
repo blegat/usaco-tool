@@ -20,7 +20,10 @@ if not password:
 	sys.exit(1)
 
 desc = input()
-name = raw_input()
+try:
+	name = raw_input()
+except (EOFError):
+	name = ""
 br = mechanize.Browser()
 
 print "Opening the main page..."
@@ -68,7 +71,7 @@ if name == "":
 	name = prev
 print "Downloading problem page..."
 br.follow_link(prevl)
-fdesc = open("desc", "w")
+fdesc = open("desc.html", "w")
 fin = open("in", "w")
 fout = open("out", "w")
 
