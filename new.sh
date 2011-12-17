@@ -84,7 +84,9 @@ cd Test0
 let "remove=0"
 if [ $# -eq 0 ]; then
 	mv "../../tmp/tmp/in" ../../tmp/tmp/out ./
-	mv ../../tmp/tmp/desc.html ../
+	if [ $desc -eq 1 ]; then
+		mv ../../tmp/tmp/desc.html ../
+	fi
 	rm -r ../../tmp
 else
 	echo "Getting the input/output for Test0..."
@@ -98,6 +100,8 @@ else
 		rm -r $taskname
 		exitclean
 	fi
-	mv desc.html ..
+	if [ $desc -eq 1 ]; then
+		mv desc.html ..
+	fi
 fi
 chmod u+x ../s.sh

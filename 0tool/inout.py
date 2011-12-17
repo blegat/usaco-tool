@@ -71,11 +71,11 @@ if name == "":
 	name = prev
 print "Downloading problem page..."
 br.follow_link(prevl)
-fdesc = open("desc.html", "w")
 fin = open("in", "w")
 fout = open("out", "w")
 
 if desc == 1:
+	fdesc = open("desc.html", "w")
 	print "Gathering task description."
 	fdesc.write(br.response().read())
 
