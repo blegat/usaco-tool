@@ -19,7 +19,9 @@ for arg in $*; do
 	esac
 done
 
+guess=false
 if [ "$taskname" == "" ]; then
+	guess=true
 	if [ -e tmp ]; then
 		echo "Remove tmp or give a problem name"
 		exit
@@ -28,14 +30,14 @@ if [ "$taskname" == "" ]; then
 	cd tmp
 	mkdir tmp
 	cd tmp
-	let "remove=0"
+	remove=false
 	echo "Getting the input/output for Test0 and the problem name..."
 	echo "$desc" | ../../0tool/inout.py
 	if [ $? -eq 1 ]; then
 		read -p "Do you want to remove the problem environment [y/N]? "
-		[[ "$REPLY" == "y" || ! -f taskname ]] && let "remove=1"
+		[[ "$REPLY" == "y" || ! -f taskname ]] && remove=true
 	fi
-	if [ $remove -eq 1 ]; then
+	if $remove; then
 		cd ../..
 		exitclean
 	fi
@@ -81,9 +83,9 @@ else
 	mkdir Test0
 fi
 cd Test0
-let "remove=0"
-if [ $# -eq 0 ]; then
-	mv "../../tmp/tmp/in" ../../tmp/tmp/out ./
+remove=false
+if $guess; then # inout.py has already been called to find the taskname
+	mv '../../tmp/tmp/in' '../../tmp/tmp/out' './'
 	if [ $desc -eq 1 ]; then
 		mv ../../tmp/tmp/desc.html ../
 	fi
@@ -93,9 +95,9 @@ else
 	echo -e "$desc\n$taskname" | python ../../0tool/inout.py
 	if [ $? -eq 1 ]; then
 		read -p "Do you want to remove the problem environment [y/N]? "
-		[ "$REPLY" == "y" ] && let "remove=1"
+		[ "$REPLY" == "y" ] && remove=true
 	fi
-	if [ $remove -eq 1 ]; then
+	if $remove; then
 		cd ../..
 		rm -r $taskname
 		exitclean
