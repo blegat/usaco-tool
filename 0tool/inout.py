@@ -3,6 +3,7 @@ import mechanize
 import re # regular expression
 import sys
 import os
+import time
 
 if not os.path.isfile("../../0tool/config"):
 	print 'No config file or not in the good directory.'
@@ -38,28 +39,41 @@ if br.title() == "USACO Training Program Gateway":
 	print 'The name/password combination is invalid. Change it in the config file.'
 	sys.exit(1)
 
-found=False
 prevl = None
 print "Looking for the problem link..."
-for link in br.links():
-	if name == "":
-		S = re.search(r"/usaco([a-z]*)2\?a=.*&S=(.*)", link.url)
-		if S:
-			t = S.group(1)
-			s = S.group(2)
-			if t == "anal":
-				prev = ""
-				prevl = None
-			elif t == "prob":
-				if prevl:
+while not prevl:
+	for link in br.links():
+		if name == "":
+			S = re.search(r"/usaco([a-z]*)2\?a=.*&S=(.*)", link.url)
+			if S:
+				t = S.group(1)
+				s = S.group(2)
+				if t == "anal":
+					prev = ""
+					prevl = None
+				elif t == "prob":
+					if prevl:
+						break
+					else:
+						prev = s
+						prevl = link
+		else:
+			if re.match(r"/usacoprob2\?a=.*&S={0}".format(name), link.url):
+				prevl = link
+				break
+	if not prevl: # go to previous chapter
+		exp = '1'
+		prevlink = None
+		for link in br.links():
+			if re.match(r".*/usacogate\?a=.*&C=[0-9]*", link.url):
+				if link.url[-1] != exp: # There is the current chapter between exp and link.url[-1]
 					break
-				else:
-					prev = s
-					prevl = link
-	else:
-		if re.match(r"/usacoprob2\?a=.*&S={0}".format(name), link.url):
-			prevl = link
+				prevlink = link
+				exp = chr(ord(link.url[-1])+1)
+		if not prevlink:
 			break
+		br.follow_link(prevlink)
+
 if not prevl:
 	print 'Invalid problem name. Unable to gather input/output files.'
 	sys.exit(1)
