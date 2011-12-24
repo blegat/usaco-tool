@@ -13,3 +13,4 @@ read -sp "Password " password
 echo
 echo -e "'user':'$username'\n'password':'$password'" > 0tool/config
 chmod u+x new.sh
+chmod u+x 0tool/*.sh 0tool/*.py

@@ -54,6 +54,7 @@ Installation:
 	$ rm usacotool-1.2.tar.gz
 	Notice that you are likely to have already untarred the usacotool-1.2.tar.gz file because you are reading this file
 	Now run conf.sh
+	$ chmod u+x conf.sh
 	$ ./conf.sh
 	Your login and password will be asked, it is the ones you use to connect the usaco website.
 	Note that the password won't be shown while you enter it.
