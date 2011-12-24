@@ -32,7 +32,7 @@ if [ "$taskname" == "" ]; then
 	cd tmp
 	remove=false
 	echo "Getting the input/output for Test0 and the problem name..."
-	echo "$desc" | ../../0tool/inout.py
+	echo "$desc" | ../../.tool/inout.py
 	if [ $? -eq 1 ]; then
 		read -p "Do you want to remove the problem environment [y/N]? "
 		[[ "$REPLY" == "y" || ! -f taskname ]] && remove=true
@@ -60,10 +60,10 @@ else
 fi
 cd $taskname
 
-sed s/"<PROGNAME>"/"$taskname"/g < ../0tool/s.sh > s.sh
+sed s/"<PROGNAME>"/"$taskname"/g < ../.tool/s.sh > s.sh
 
-user=$(grep 'user' < ../0tool/config | sed s/"[ \t]*[\"']user[\"'][ \t]*:[ \t]*[\"']\(.*\)[\"']"/"\1"/g)
-sed -e s/"<USER>"/"$user"/g -e s/"<PROGNAME>"/"$taskname"/g < ../0tool/main.cpp > main.cpp
+user=$(grep 'user' < ../.tool/config | sed s/"[ \t]*[\"']user[\"'][ \t]*:[ \t]*[\"']\(.*\)[\"']"/"\1"/g)
+sed -e s/"<USER>"/"$user"/g -e s/"<PROGNAME>"/"$taskname"/g < ../.tool/main.cpp > main.cpp
 
 if [ -e Test0 ]; then
 	if [ ! -d Test0 ]; then
@@ -92,7 +92,7 @@ if $guess; then # inout.py has already been called to find the taskname
 	rm -r ../../tmp
 else
 	echo "Getting the input/output for Test0..."
-	echo -e "$desc\n$taskname" | python ../../0tool/inout.py
+	echo -e "$desc\n$taskname" | python ../../.tool/inout.py
 	if [ $? -eq 1 ]; then
 		read -p "Do you want to remove the problem environment [y/N]? "
 		[ "$REPLY" == "y" ] && remove=true

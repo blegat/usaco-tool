@@ -88,7 +88,7 @@ for arg in $*; do
 	case "$arg" in
 		-d) db=true
 			;;
-		-s) ../0tool/submit.py
+		-s) ../.tool/submit.py
 			exit
 			;;
 		-*)

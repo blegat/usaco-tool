@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ ! -d 0tool ]; then
-	echo "ERROR 0tool directory doesn't exists or is not a directory, aborting"
+if [ ! -d .tool ]; then
+	echo "ERROR .tool directory doesn't exists or is not a directory, aborting"
 	exit
 fi
 if [ ! -f new.sh ]; then
@@ -11,6 +11,6 @@ fi
 read -p "USACO UserName " username
 read -sp "Password " password
 echo
-echo -e "'user':'$username'\n'password':'$password'" > 0tool/config
+echo -e "'user':'$username'\n'password':'$password'" > .tool/config
 chmod u+x new.sh
-chmod u+x 0tool/*.sh 0tool/*.py
+chmod u+x .tool/*.sh .tool/*.py

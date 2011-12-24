@@ -26,7 +26,7 @@ Environment:
 	conf.sh
 	new.sh
 	README
-	0tool:
+	.tool:
 		inout.py
 		submit.py
 		config
@@ -40,7 +40,7 @@ Environment:
 			in
 			out
 	
-	The scripts in 0tool should not be called directly.
+	The scripts in .tool should not be called directly.
 	They are called by other scripts that you call directly like new.sh, conf.sh and s.sh.
 
 Required packages:

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-../0tool/run.sh $*
+../.tool/run.sh $*

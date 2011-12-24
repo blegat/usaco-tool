@@ -5,10 +5,10 @@ import sys
 import os
 import time
 
-if not os.path.isfile("../../0tool/config"):
+if not os.path.isfile("../../.tool/config"):
 	print 'No config file or not in the good directory.'
 	sys.exit(1)
-fconfig = open("../../0tool/config", "r")
+fconfig = open("../../.tool/config", "r")
 config = fconfig.read()
 user = re.search(r"[ \t]*[\"']user[\"'][ \t]*:[ \t]*[\"'](.*)[\"']", config)
 if not user:
