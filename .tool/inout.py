@@ -75,7 +75,10 @@ while not prevl:
 		br.follow_link(prevlink)
 
 if not prevl:
-	print 'Invalid problem name. Unable to gather input/output files.'
+	if name == "":
+		print 'No problem available.'
+	else:
+		print 'Invalid problem name. Unable to gather input/output files.'
 	sys.exit(1)
 
 if name == "":

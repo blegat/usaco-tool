@@ -34,8 +34,12 @@ if [ "$taskname" == "" ]; then
 	echo "Getting the input/output for Test0 and the problem name..."
 	echo "$desc" | ../../.tool/inout.py
 	if [ $? -eq 1 ]; then
-		read -p "Do you want to remove the problem environment [y/N]? "
-		[[ "$REPLY" == "y" || ! -f taskname ]] && remove=true
+		if [ ! -f taskname ]; then
+			remove=true
+		else
+			read -p "Do you want to remove the problem environment [y/N]? "
+			[ "$REPLY" == "y" ] && remove=true
+		fi
 	fi
 	if $remove; then
 		cd ../..
