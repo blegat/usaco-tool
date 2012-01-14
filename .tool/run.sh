@@ -70,7 +70,7 @@ testn () {
 			if [ ! -z "$(cat /tmp/standardoutput)" ]; then
 				echo -e "\n         Your program printed data to stdout.  Here is the data:"
 				echo "         --------------------"
-				catbet /tmp/standardoutput "         "
+				catbef /tmp/standardoutput "         "
 				echo "         --------------------"
 			fi
 			echo "   Test $1: BADCHECK $timing ($timing secs, $memory KB)"
