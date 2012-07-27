@@ -1,8 +1,10 @@
 #!/bin/bash
 
 catbef () {
-	#cat $1 | while read line; do for i in $(seq $2); do echo -en "\t"; done; echo $line; done
+	OLDIFC=$IFC
+	IFC='\n' # Make read stop ignoring space at the beginning of lines
 	cat $1 | while read line; do echo -e "$2$line"; done
+	IFC=$OLDIFC
 }
 
 cleanup () {
