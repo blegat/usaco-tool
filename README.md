@@ -109,14 +109,14 @@ Detailed description
 * `s.sh`
 > Use it that way
 
-> `$ s.sh [-d] [-s] [<i\>]`
+> `$ s.sh [-d] [-s] [<i>]`
 
 > * `-d`
 > > Run the tests in debug mode.
 > * `-s`
 > > Submit the file calling submit.py script. It requires an internet connection.
 > > So it can take some time if yours is not good enough.
-> * `<i\>`
+> * `<i>`
 > > Only run the ith test case. By default, it runs all your valid Test cases.
 
 * `config`
@@ -140,10 +140,10 @@ This tool in in beta, bugs or spelling and grammar mistakes are likely to happen
 Don't blame yourself, it is likely our fault and please report it to us.
 
 New features likely to be in new versions:
-A script to create personal test cases probably stored in `test<i\>` not to overwrite `Test<i\>` which are official test cases
+A script to create personal test cases probably stored in `test<i>` not to overwrite `Test<i>` which are official test cases
 chosen by usaco website
 
-The fields `<...\>` in `s.sh` and `main.cpp` should not be replaced by their value manually.
+The fields `<...>` in `s.sh` and `main.cpp` should not be replaced by their value manually.
 It is done by `new.sh`.
 
 Special thanks
