@@ -37,22 +37,22 @@ Environment
 The environment created by the scripts is the following
 
 * main_directory/
-* * conf.sh
-* * new.sh
-* * README
-* * .tool/
-* * * inout.py
-* * * submit.py
-* * * config
-* * * main.cpp
-* * * run.sh
-* * s.sh
+    * conf.sh
+    * new.sh
+    * README
+    * .tool/
+        * inout.py
+        * submit.py
+        * config
+        * main.cpp
+        * run.sh
+        * s.sh
 * directories containing files for each problem named with the problem name/
-* * main.cpp
-* * s.sh
-* * Test<i\>/
-* * * in
-* * * out
+    * main.cpp
+    * s.sh
+    * Test<i\>/
+        * in
+        * out
 	
 The scripts in .tool should not be called directly.
 They are called by other scripts that you call directly like new.sh, conf.sh and s.sh.
